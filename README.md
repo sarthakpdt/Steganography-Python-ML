@@ -1,112 +1,103 @@
-# 🖼️ Image Steganography (RGB Pixel Method)  
+# 🖼️ Image Steganography using RGB Pixel Manipulation (LSB Method)
 
-## 📌 Project Overview  
-This project implements an **Image-Based Steganography system** using the **Least Significant Bit (LSB) method** on RGB pixel values.  
+## 📌 Overview
+This project implements an **Image Steganography System** that allows you to hide a secret text message inside an image using the **Least Significant Bit (LSB) modification technique** on **RGB pixels**. The main goal is to securely embed text inside images while keeping the image visually unchanged.
 
-The system allows you to:  
-- **Encode** (hide) a secret text message inside an image.  
-- **Decode** (retrieve) the hidden message back from the image.  
-
-It is a simple yet effective approach for secure communication using images.  
+The project supports both:
+- **Encoding** (Hide text inside an image)
+- **Decoding** (Extract hidden text from the modified image)
 
 ---
 
-## 🎯 Objectives  
-- Develop a program to **hide text inside images**.  
-- Use **RGB pixel modification (LSB method)** for embedding data.  
-- Provide a way to **decode hidden messages** from stego images.  
-- Ensure the output image looks visually identical to the original.  
+## 🎯 Objectives
+- Hide text securely inside an image without visibly altering the image.
+- Use **RGB pixel LSB modification** to embed the message.
+- Decode the message with pixel-by-pixel extraction.
+- Maintain image quality as close as possible to the original.
 
 ---
 
-## ⚙️ Methodology  
+## ⚙️ Method Used
 
-### 🔹 Encoding Process  
-1. Convert the secret message into **binary**.  
-2. Traverse the image pixels in groups of 3.  
-3. Modify the **Least Significant Bit (LSB)** of the RGB channels to store message bits.  
-4. Use the **9th pixel value as a flag** to mark whether more data follows or not.  
-5. Save the modified image as the **stego image**.  
+### 🔹 Encoding
+1. Convert the text message into **binary**.
+2. Traverse image pixels (R, G, B channels).
+3. Replace the **Least Significant Bit** of each RGB channel with message bits.
+4. Use a special flag to indicate the **end of the message**.
+5. Save the modified image as the **stego image**.
 
-### 🔹 Decoding Process  
-1. Read the pixels of the stego image in the same order.  
-2. Extract the **LSBs of RGB values** to reconstruct binary data.  
-3. Stop reading when the flag bit indicates the end of the message.  
-4. Convert the binary data back into text.  
-
----
-
-## 📂 Example Workflow  
-
-### ✅ Encoding  
-- Input: `original.png`  
-- Message: `"This is a secret message!"`  
-- Output: `stego.png`  
-
-### ✅ Decoding  
-- Input: `stego.png`  
-- Output: `"This is a secret message!"`  
+### 🔹 Decoding
+1. Read pixel RGB values from the stego image.
+2. Extract the **LSB** of each color channel in sequence.
+3. Convert the binary sequence back into characters.
+4. Stop when the **end flag** bit is reached.
+5. Display the recovered secret message.
 
 ---
 
-## 📦 Requirements  
-
-Make sure you have the following installed:  
-- Python 3.x  
-- Pillow (for image handling)  
-
-Install dependencies with:  
+## 🧱 Requirements
+Make sure the following packages are installed:
 ```bash
 pip install pillow
 ```
+## ▶️ How to Run
 
-## How to Run
-Clone the repository:
-
+### 1. Clone the Repository
+```bash
 git clone https://github.com/your-username/Image-Steganography.git
 cd Image-Steganography
-
-Run the program:
-
+```
+```
+2. Run the Program
 python stegano.py
 
-Select an option:
+🎮 Usage
 
-Enter 1 → To encode a message into an image.
+When you run the program, you will see a menu:
 
-Enter 2 → To decode a hidden message from a stego image.
-
-## 📊 Sample Output
-
-Encoding Example:
-
-Image-Based Steganography (RGB Pixel Method)
-1. Encode a message
-2. Decode a message
+Option	Description
+1	Encode a secret message inside an image
+2	Decode the hidden message from a stego image
+✅ Encoding Example
 Choose an option (1/2): 1
-Enter input image path (PNG recommended) or name of the image: original.png
-Enter output image path or name of the output image path: stego.png
-Enter the message to hide: Hello World!
-Message encoded successfully into 'stego.png'.
+Enter input image path: original.png
+Enter output image name: stego.png
+Enter the message to hide: This is a secret!
+Message encoded successfully into 'stego.png'
 
-
-Decoding Example:
-
-Image-Based Steganography (RGB Pixel Method)
-1. Encode a message
-2. Decode a message
+✅ Decoding Example
 Choose an option (1/2): 2
 Enter stego image path: stego.png
 Decoded message:
-Hello World!
+This is a secret!
 
-## 🙌 Acknowledgment
+📝 Notes
 
-This project was developed as part of my exploration in Cryptography and Steganography.
-Thanks to the open-source community for resources on LSB image steganography.
+Use PNG format to avoid image compression artifacts.
 
-## 📝 License
+Ensure the image has enough pixels to store the full message.
 
-This project is for educational purposes only. Do not use it for illegal or malicious activities.
+The output image may look slightly different due to RGB LSB modification, but the change is usually visually unnoticeable.
+
+🙌 Acknowledgment
+
+This project was developed as part of learning and research in Cryptography & Steganography.
+
+📝 License
+
+This project is intended for educational use only. Do not use it for illegal or malicious activities.
+
+
+---
+
+If you want, I can now **add:**
+- A professional **Abstract**
+- **Block Diagram / Workflow Diagram**
+- **Sample screenshots**
+- **References section**
+
+Just tell me: **Do you want your README to look more academic or more industry/professional?**
+```
+
 ```bash
 pip install pillow
